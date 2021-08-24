@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Data.SqlClient;
 
 using OnlineDataDownloadeer.Classes;
 
@@ -14,12 +16,19 @@ namespace OnlineDataDownloadeer.Forms
 {
     public partial class FrmMonitor : Form
     {
+        OnlineDB onlineDB;
+        
         public FrmMonitor()
         {
             InitializeComponent();
             MsgTypes.printme("1 form loaded", this);
+             onlineDB=  new OnlineDB(this);
         }
 
+        public void initForm()
+        {
+            timer2.Interval = (int)(timer1.Interval/2);
+        }
 
         #region Controls
         private void buttonLaunch_Click(object sender, EventArgs e)
@@ -31,6 +40,8 @@ namespace OnlineDataDownloadeer.Forms
             Tools.OnlineChrome.Navigate("https://rmaamericas.flextronics.com/flexrma/flmanualprealerts/");
             MsgTypes.printme("4 FlexlinkChrome navigated", this);
 
+            System.Threading.Thread.Sleep(5000);
+
             if (login())
             {
                 MsgTypes.printme("5.1 online capture logged in",this);
@@ -40,7 +51,6 @@ namespace OnlineDataDownloadeer.Forms
                 MsgTypes.printme("5.2 failure at login", this);
             }
         }
-
         private void buttonQuit_Click(object sender, EventArgs e)
         {
             Tools.OnlineChrome.Quit();
@@ -48,9 +58,32 @@ namespace OnlineDataDownloadeer.Forms
         }
         private void buttonReport_Click(object sender, EventArgs e)
         {
+            //timer1.Enabled = true;
             runReport();
         }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            runReport();
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            string newfile = onlineDB.IsNewFileAvailable();
+            if (newfile.Length > 0)
+                MsgTypes.printme("there is a new file available: " + newfile, this);
+        }
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+            string newfile = onlineDB.IsNewFileAvailable();
+            if (newfile.Length > 0)
+            {
+                MsgTypes.printme("there is a new file available: " + newfile, this);
+                onlineDB.InsertRecord(newfile);
+            }
+
+        }
+
         #endregion
+
 
         #region Logic
         private bool login()
@@ -124,14 +157,20 @@ namespace OnlineDataDownloadeer.Forms
 
 
         }
-
-
-
         #endregion
 
-        private void timer1_Tick(object sender, EventArgs e)
+        
+
+    
+        private void FrmMonitor_Load(object sender, EventArgs e)
         {
-            runReport();
+            initForm();
+
+            MsgTypes.printme("timer 1: " + timer1.Interval.ToString(),this);
+            MsgTypes.printme("timer 2: " + timer2.Interval.ToString(),this);
+
         }
+
+        
     }
 }

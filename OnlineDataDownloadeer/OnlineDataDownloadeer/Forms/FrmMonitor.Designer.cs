@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMonitor));
             this.prompt = new System.Windows.Forms.RichTextBox();
             this.buttonLaunch = new System.Windows.Forms.Button();
             this.buttonQuit = new System.Windows.Forms.Button();
             this.buttonReport = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buttonList = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // prompt
@@ -78,21 +81,38 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 300000;
+            this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // buttonList
+            // 
+            this.buttonList.Location = new System.Drawing.Point(248, 46);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(136, 42);
+            this.buttonList.TabIndex = 3;
+            this.buttonList.Text = "List files in folder";
+            this.buttonList.UseVisualStyleBackColor = true;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 5000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // FrmMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 332);
+            this.Controls.Add(this.buttonList);
             this.Controls.Add(this.buttonReport);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.buttonLaunch);
             this.Controls.Add(this.prompt);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMonitor";
-            this.Text = "FrmMonitor";
-            this.TopMost = true;
+            this.Text = "Online Capture Data Downloader";
+            this.Load += new System.EventHandler(this.FrmMonitor_Load);
             this.ResumeLayout(false);
 
         }
@@ -104,5 +124,7 @@
         private System.Windows.Forms.Button buttonQuit;
         private System.Windows.Forms.Button buttonReport;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button buttonList;
+        private System.Windows.Forms.Timer timer2;
     }
 }
