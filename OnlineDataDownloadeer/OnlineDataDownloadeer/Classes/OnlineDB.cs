@@ -52,7 +52,7 @@ namespace OnlineDataDownloadeer.Classes
                 foreach (db_elptestDataSet.tbl_MSFTOnlineFile_LogRow row in dataset.Rows)
                 {
                     string dbfilename = row[1].ToString();
-                    MsgTypes.printme("- comparing " + localfilename + " > " + dbfilename, this.commingFrom);
+                    //MsgTypes.printme("- comparing " + localfilename + " > " + dbfilename, this.commingFrom);
                     if (localfilename == dbfilename)
                     {
                         matchfound = true;
@@ -65,6 +65,45 @@ namespace OnlineDataDownloadeer.Classes
                 }
             }
             return "";
+        }
+        public int qtyFilesLogged()
+        {
+            db_elptestDataSet.tbl_MSFTOnlineFile_LogDataTable dataset =
+            new db_elptestDataSet.tbl_MSFTOnlineFile_LogDataTable();
+            onlineDB.Fill(dataset);
+            return dataset.Rows.Count;
+        }
+        public string getOldestUnprocessedFile()
+        {
+
+            DataSet dataset = new DataSet();
+            string sql = getQuery("getOldestUnProcessedFile");
+            SqlDataAdapter adp = new SqlDataAdapter(sql, onlineDB.Connection.ConnectionString);
+            adp.Fill(dataset);
+
+            return dataset.Tables[0].Rows[0].ItemArray[1].ToString();
+
+        }
+        public void markFileProcessed(string name)
+        {
+            //TODO insert logic to look for the name in database file name 
+            //and set the date of processing.
+
+            string sql = getQuery("msft_udpateOnlineLogRow");
+            sql = String.Format(sql, name, DateTime.Now);
+            MsgTypes.printme("**************************", commingFrom);
+            MsgTypes.printme("query description:", commingFrom);
+            MsgTypes.printme(sql,commingFrom);
+            MsgTypes.printme("**************************", commingFrom);
+
+            //SqlConnection conn = new SqlConnection(onlineDB.Connection.ConnectionString);
+            SqlConnection conn = new SqlConnection("Data Source=elpuatsqlserver.database.windows.net;Initial Catalog=db_elptest;User ID=azureuser;Password=elp.1234");
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = sql;
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
         #endregion
 

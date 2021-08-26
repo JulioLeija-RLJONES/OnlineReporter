@@ -1,0 +1,3 @@
+﻿SELECT TOP(1)* FROM dbo.tbl_MSFTOnlineFile_Log
+WHERE ProcessedOn IS NULL
+ORDER BY FileId ASC

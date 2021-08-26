@@ -37,6 +37,12 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.buttonList = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.labelFileQty = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonProcess = new System.Windows.Forms.Button();
+            this.labelCycles = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // prompt
@@ -99,11 +105,70 @@
             this.timer2.Interval = 5000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // labelFileQty
+            // 
+            this.labelFileQty.AutoSize = true;
+            this.labelFileQty.Location = new System.Drawing.Point(245, 125);
+            this.labelFileQty.Name = "labelFileQty";
+            this.labelFileQty.Size = new System.Drawing.Size(41, 17);
+            this.labelFileQty.TabIndex = 4;
+            this.labelFileQty.Text = "Files:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(248, 182);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(178, 22);
+            this.textBox1.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(245, 162);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Process File";
+            // 
+            // buttonProcess
+            // 
+            this.buttonProcess.Location = new System.Drawing.Point(441, 182);
+            this.buttonProcess.Name = "buttonProcess";
+            this.buttonProcess.Size = new System.Drawing.Size(75, 23);
+            this.buttonProcess.TabIndex = 7;
+            this.buttonProcess.Text = "Process";
+            this.buttonProcess.UseVisualStyleBackColor = true;
+            this.buttonProcess.Click += new System.EventHandler(this.buttonProcess_Click);
+            // 
+            // labelCycles
+            // 
+            this.labelCycles.AutoSize = true;
+            this.labelCycles.Location = new System.Drawing.Point(247, 13);
+            this.labelCycles.Name = "labelCycles";
+            this.labelCycles.Size = new System.Drawing.Size(122, 17);
+            this.labelCycles.TabIndex = 8;
+            this.labelCycles.Text = "Cycles completed:";
+            // 
+            // labelVersion
+            // 
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Location = new System.Drawing.Point(464, 211);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(56, 17);
+            this.labelVersion.TabIndex = 9;
+            this.labelVersion.Text = "Version";
+            // 
             // FrmMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 332);
+            this.Controls.Add(this.labelVersion);
+            this.Controls.Add(this.labelCycles);
+            this.Controls.Add(this.buttonProcess);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.labelFileQty);
             this.Controls.Add(this.buttonList);
             this.Controls.Add(this.buttonReport);
             this.Controls.Add(this.buttonQuit);
@@ -114,6 +179,7 @@
             this.Text = "Online Capture Data Downloader";
             this.Load += new System.EventHandler(this.FrmMonitor_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -126,5 +192,11 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label labelFileQty;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonProcess;
+        private System.Windows.Forms.Label labelCycles;
+        private System.Windows.Forms.Label labelVersion;
     }
 }

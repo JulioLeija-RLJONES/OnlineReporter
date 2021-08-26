@@ -11,23 +11,30 @@ using System.IO;
 using System.Data.SqlClient;
 
 using OnlineDataDownloadeer.Classes;
+using System.Diagnostics;
 
 namespace OnlineDataDownloadeer.Forms
 {
     public partial class FrmMonitor : Form
     {
         OnlineDB onlineDB;
-        
+        PyHelper pyhelper;
+        int cycles;
         public FrmMonitor()
         {
             InitializeComponent();
             MsgTypes.printme("1 form loaded", this);
-             onlineDB=  new OnlineDB(this);
+            onlineDB=  new OnlineDB(this);
+            pyhelper = new PyHelper(this);
         }
 
         public void initForm()
         {
-            timer2.Interval = (int)(timer1.Interval/2);
+            timer2.Interval = (int)(timer1.Interval/4);
+            if (!isDebugMode())
+            {
+                labelVersion.Text = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
+            }
         }
 
         #region Controls
@@ -58,18 +65,29 @@ namespace OnlineDataDownloadeer.Forms
         }
         private void buttonReport_Click(object sender, EventArgs e)
         {
-            //timer1.Enabled = true;
+            timer1.Enabled = true;
+            timer2.Enabled = true;
             runReport();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             runReport();
+            cycles += 1;
+            labelCycles.Text = "Cycles completed: " + cycles;
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
             string newfile = onlineDB.IsNewFileAvailable();
             if (newfile.Length > 0)
+            {
                 MsgTypes.printme("there is a new file available: " + newfile, this);
+                onlineDB.InsertRecord(newfile);
+                processFile(newfile);
+            }
+
+            labelFileQty.Text = "Files: " + onlineDB.qtyFilesLogged();
+
+            
         }
         private void buttonList_Click(object sender, EventArgs e)
         {
@@ -81,7 +99,23 @@ namespace OnlineDataDownloadeer.Forms
             }
 
         }
+        private void buttonProcess_Click(object sender, EventArgs e)
+        {
+            if (processFile(getFileName()))
+            {
+                MsgTypes.printme("file processed: " + getFileName(), this);
+                textBox1.Clear();
+            }
+            else
+            {
+                MsgTypes.printme("could not proccess file: " + getFileName(), this);
+            }
+        }
 
+        private string getFileName()
+        {
+            return textBox1.Text;
+        }
         #endregion
 
 
@@ -157,6 +191,15 @@ namespace OnlineDataDownloadeer.Forms
 
 
         }
+       
+        private bool processFile(string name)
+        {
+            MsgTypes.printme("processing file : " + name,this);
+            bool result = pyhelper.run_processer(name);
+            onlineDB.markFileProcessed(name);
+            return result;
+        }
+
         #endregion
 
         
@@ -171,6 +214,22 @@ namespace OnlineDataDownloadeer.Forms
 
         }
 
-        
+
+        #region Debug
+        public bool isDebugMode()
+        {
+            if (Debugger.IsAttached)
+            {
+                // Since there is a debugger attached, assume we are running from the IDE
+                return true;
+            }
+            else
+            {
+                return false;
+                // Assume we aren't running from the IDE
+            }
+        }
+        #endregion
+
     }
 }

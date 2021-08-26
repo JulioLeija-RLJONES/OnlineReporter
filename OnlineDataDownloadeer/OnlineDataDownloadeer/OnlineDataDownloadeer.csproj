@@ -29,7 +29,7 @@
     <SuiteName>Online Capture Data Downloader</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -91,6 +91,7 @@
     <Compile Include="Classes\OnlineDB.cs" />
     <Compile Include="Classes\OnlineDriver.cs" />
     <Compile Include="Classes\MsgTypes.cs" />
+    <Compile Include="Classes\PyHelper.cs" />
     <Compile Include="Classes\Tools.cs" />
     <Compile Include="db_elptestDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -171,7 +172,16 @@
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="favicon_1.ico" />
+    <Content Include="process_file.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Queries\getOldestUnProcessedFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Queries\msft_getOnlineFileLog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Queries\msft_udpateOnlineLogRow.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

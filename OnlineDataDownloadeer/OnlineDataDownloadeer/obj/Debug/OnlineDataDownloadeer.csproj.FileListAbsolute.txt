@@ -32,3 +32,6 @@ C:\Users\j.leija\source\git\OnlineReporter\OnlineDataDownloadeer\OnlineDataDownl
 C:\Users\j.leija\source\git\OnlineReporter\OnlineDataDownloadeer\OnlineDataDownloadeer\obj\Debug\OnlineDataDownloadeer.pdb
 C:\Users\j.leija\source\git\OnlineReporter\OnlineDataDownloadeer\OnlineDataDownloadeer\bin\Debug\chromedriver.exe
 C:\Users\j.leija\source\git\OnlineReporter\OnlineDataDownloadeer\OnlineDataDownloadeer\bin\Debug\Queries\msft_getOnlineFileLog.txt
+C:\Users\j.leija\source\git\OnlineReporter\OnlineDataDownloadeer\OnlineDataDownloadeer\bin\Debug\Queries\getOldestUnProcessedFile.txt
+C:\Users\j.leija\source\git\OnlineReporter\OnlineDataDownloadeer\OnlineDataDownloadeer\bin\Debug\Queries\msft_udpateOnlineLogRow.txt
+C:\Users\j.leija\source\git\OnlineReporter\OnlineDataDownloadeer\OnlineDataDownloadeer\bin\Debug\process_file.exe

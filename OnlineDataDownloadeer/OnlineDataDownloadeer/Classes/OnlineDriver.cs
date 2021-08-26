@@ -21,7 +21,7 @@ namespace OnlineDataDownloadeer.Classes
         {
             this.commingFrom = commingFrom;
         }
-
+        
         private void login(string user, string password)
         {
 

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="OnlineDataDownloadeer.exe" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="OnlineDataDownloadeer.exe" version="1.0.0.7" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="favicon_1.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OnlineDataDownloadeer.exe" size="190424">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OnlineDataDownloadeer.exe" size="194520">
       <assemblyIdentity name="OnlineDataDownloadeer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UrVetTaxXc2pW2AHTydbXja/NAFM0mBjap/xOpx0buk=</dsig:DigestValue>
+        <dsig:DigestValue>5E5xffHvdCiKLtzdwVs/jLG9ELDlhDrmSBEPqmNIDpQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -102,6 +102,24 @@
       <dsig:DigestValue>XPpFQyLlsW4FYSQ/bk4P8XCKt74RQcWxidXRy1jhCM8=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="process_file.exe" size="40611919">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>sjNGhi7kaWtUTIxI2OzkHMiFCcxXkQnHk22saCgfBAE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Queries\getOldestUnProcessedFile.txt" size="97">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>zxNZxO1hjdBkjqgtbUp8twtud/qQK9p0W50NutBs7ug=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Queries\msft_getOnlineFileLog.txt" size="43">
     <hash>
       <dsig:Transforms>
@@ -109,6 +127,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>Th/IwWwg9eMuX5lTn3AJEt43aeYwq8kosH3UGh8TV1s=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Queries\msft_udpateOnlineLogRow.txt" size="81">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>QDOWxdtAKxMEVKIsxsFA542E7jIVUJMcVVAm/frek7s=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
