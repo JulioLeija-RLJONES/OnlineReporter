@@ -20,7 +20,7 @@ namespace OnlineDataDownloadeer.Classes
             string path = System.Windows.Forms.Application.ExecutablePath.Replace("OnlineDataDownloadeer.exe", "");
             ProcessStartInfo start = new ProcessStartInfo();
             start.FileName = path + "process_file.exe";
-            MsgTypes.printme("processor path: " + start.FileName,commingFrom);
+            //MsgTypes.printme("processor path: " + start.FileName,commingFrom);
             start.Arguments = string.Format("{0}", KnownFolders.GetPath(KnownFolder.Downloads) + "\\"+  fileName);
             start.UseShellExecute = false;
             start.RedirectStandardOutput = true;

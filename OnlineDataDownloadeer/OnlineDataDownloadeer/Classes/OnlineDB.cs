@@ -91,10 +91,10 @@ namespace OnlineDataDownloadeer.Classes
 
             string sql = getQuery("msft_udpateOnlineLogRow");
             sql = String.Format(sql, name, DateTime.Now);
-            MsgTypes.printme("**************************", commingFrom);
-            MsgTypes.printme("query description:", commingFrom);
-            MsgTypes.printme(sql,commingFrom);
-            MsgTypes.printme("**************************", commingFrom);
+            //MsgTypes.printme("**************************", commingFrom);
+            //MsgTypes.printme("query description:", commingFrom);
+            //MsgTypes.printme(sql,commingFrom);
+            //MsgTypes.printme("**************************", commingFrom);
 
             //SqlConnection conn = new SqlConnection(onlineDB.Connection.ConnectionString);
             SqlConnection conn = new SqlConnection("Data Source=elpuatsqlserver.database.windows.net;Initial Catalog=db_elptest;User ID=azureuser;Password=elp.1234");

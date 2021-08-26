@@ -195,9 +195,15 @@ namespace OnlineDataDownloadeer.Forms
         private bool processFile(string name)
         {
             MsgTypes.printme("processing file : " + name,this);
-            bool result = pyhelper.run_processer(name);
-            onlineDB.markFileProcessed(name);
-            return result;
+            Task task = Task.Run(() =>
+            {
+                Console.WriteLine("file processing started");
+                pyhelper.run_processer(name);
+                onlineDB.markFileProcessed(name);
+                Console.WriteLine("file processing completed");
+            });
+
+            return true;
         }
 
         #endregion

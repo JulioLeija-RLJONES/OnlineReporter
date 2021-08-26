@@ -1,0 +1,3 @@
+﻿UPDATE dbo.tbl_MSFTOnlineFile_Log
+SET ProcessedOn = '{1}'
+WHERE Name = '{0}'
